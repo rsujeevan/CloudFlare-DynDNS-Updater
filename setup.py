@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 """A setuptools based setup module.
 See:
 https://packaging.python.org/guides/distributing-packages-using-setuptools/
@@ -48,31 +46,9 @@ setup(
         "Programming Language :: Python :: 3 :: Only",
     ],
     keywords="CloudFlare, dyndns, dns",  # Optional
-    # When your source code is in a subdirectory under the project root, e.g.
-    # `src/`, it is necessary to specify the `package_dir` argument.
-    # package_dir={'': 'src'},  # Optional
-    # You can just specify package directories manually here if your project is
-    # simple. Or you can use find_packages().
-    #
-    # Alternatively, if you just want to distribute a single Python file, use
-    # the `py_modules` argument instead as follows, which will expect a file
-    # called `my_module.py` to exist:
-    #
-    #   py_modules=["my_module"],
-    #
-    # packages=find_packages(where='src'),  # Required
-    # py_modules=["cfdyndns"],
     packages=find_packages(exclude=("test",)),
     python_requires=">=3.6, <4",
     install_requires=["requests >= 2.0"],  # Optional
-    # List additional groups of dependencies here (e.g. development
-    # dependencies). Users will be able to install these using the "extras"
-    # syntax, for example:
-    #
-    #   $ pip install sampleproject[dev]
-    #
-    # Similar to `install_requires` above, these must be valid existing
-    # projects.
     extras_require={  # Optional
         "dev": ["wheel", "flake8", "black"],
         #'test': ['coverage'],
