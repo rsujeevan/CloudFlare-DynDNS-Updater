@@ -56,12 +56,12 @@ def setup_args_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "-g",
-        "--log",
+        "--loglevel",
         required=False,
         type=str,
         choices=["info", "debug", "quiet"],
         default="info",
-        help="set loging level",
+        help="Set loging level, default is info and setting it to quiet turns off logging",
     )
     parser.add_argument("host", type=str, help="DNS record name. (e.g www.example.com)")
     return parser
@@ -71,9 +71,20 @@ def determine_domain_name(host: str) -> str:
     return host.split(".", 1)[-1]
 
 
+def setup_logging(script_name: str, loglevel: str):
+    if loglevel == "quiet":
+        return
+    level = logging.DEBUG if loglevel == "debug" else logging.INFO
+    logging.getLogger().setLevel(level)
+    logging.getLogger("requests").setLevel(logging.WARNING)
+    logging.basicConfig(format="{}: %(levelname)s %(message)s".format(script_name))
+
+
 def main() -> int:
     parser = setup_args_parser()
+    script_name = parser.prog
     args = parser.parse_args()
+    setup_logging(script_name, args.loglevel)
     zone = args.zone if args.zone else determine_domain_name(args.host)
     logging.debug("Initialzing CloudFlareAPI")
     cloudflare_api = CloudFlareAPI(args.email, args.token, zone)
