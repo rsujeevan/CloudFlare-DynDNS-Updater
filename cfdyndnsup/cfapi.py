@@ -107,7 +107,7 @@ class CloudFlareAPI:
         logging.debug(f"Updating DNS record, sending {data}")
         response = requests.put(url=url, headers=self._headers(), json=data)
         rjson = self._to_json_and_handle_error(response)
-        logging.info("Update sucessful")
+        logging.info("Update successful")
         return rjson
 
     @staticmethod

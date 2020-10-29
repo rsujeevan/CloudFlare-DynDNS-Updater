@@ -45,7 +45,7 @@ def setup_args_parser() -> argparse.ArgumentParser:
         "--ip",
         required=False,
         type=str,
-        help="DNS record content (e.g IPv4), defaults to auto detection of exteral/public ip",
+        help="DNS record content (e.g IPv4), defaults to auto detection of external/public ip",
     )
     parser.add_argument(
         "-p",
