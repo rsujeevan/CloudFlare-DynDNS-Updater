@@ -51,7 +51,7 @@ setup(
     install_requires=["requests >= 2.0"],  # Optional
     extras_require={  # Optional
         "dev": ["wheel", "flake8", "black"],
-        #'test': ['coverage'],
+        # 'test': ['coverage'],
     },
     entry_points={  # Optional
         "console_scripts": [
